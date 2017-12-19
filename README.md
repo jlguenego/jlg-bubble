@@ -48,8 +48,8 @@ It is an AngularJS module.
 {
     count: 31, // number of bubbles
     colors: ['blue', 'red', 'green', 'yellow'], // array of used colors
-    opacity: 0.05, // bubbles opacity
-    radius: 50 // bubbles minimum radius
+    opacity: 0.05, // bubble opacity
+    radius: 50 // bubble minimum radius
 };
 ```
 
