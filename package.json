@@ -1,6 +1,6 @@
 {
   "name": "jlg-bubble",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "AngularJS attribute directive that generates nice SVG background with static bubbles.",
   "main": "src/jlg-bubble.js",
   "repository": {
