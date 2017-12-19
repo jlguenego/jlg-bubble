@@ -19,4 +19,20 @@ h1 {
 	margin-top: 0;
 }
 
+form {
+	display: block;
+	padding: 1em;
+	width: 15em;
+	background-color: hsla(0, 0%, 100%, 0.8);
+	border: 1px solid black;
+	font-size: 2em;
+}
 
+label {
+	display: flex;
+	align-items: center;
+}
+
+label>span {
+	width: 10em;
+}
