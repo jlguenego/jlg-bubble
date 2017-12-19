@@ -62,8 +62,8 @@
 
 
 				this.render = () => {
-					this.options.width = this.bggen.clientWidth;
-					this.options.height = this.bggen.clientHeight;
+					this.options.width = this.options.width || this.bggen.clientWidth;
+					this.options.height = this.options.height || this.bggen.clientHeight;
 
 					const colors = this.options.colors || [
 						'hsla(0, 100%, 50%, 0.05)',
