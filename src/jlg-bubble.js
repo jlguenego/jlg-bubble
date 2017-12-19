@@ -26,7 +26,6 @@ function generateCircle(options) {
 
 	for (let i = 0; i < dimension * dimension - options.count; i++) {
 		const index = Math.random() * zones.length;
-		console.log('zones', zones);
 		zones.splice(index, 1);
 	}
 
@@ -59,10 +58,6 @@ app.directive('jlgBubble', () => {
 
 
 			this.render = () => {
-				console.log('this', this);
-
-
-
 				this.options.width = this.bggen.clientWidth;
 				this.options.height = this.bggen.clientHeight;
 
