@@ -15,6 +15,7 @@ gulp.task('deploy', function () {
 gulp.task('build:js', function () {
     return gulp.src('src/**/*.js')
         .pipe(babel())
+        .on('error', console.error.bind(console))
         .pipe(gulp.dest('dist'));
 });
 
