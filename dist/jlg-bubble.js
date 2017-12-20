@@ -39,7 +39,8 @@
 				x: (zones[_i2].x + Math.random()) * w,
 				y: (zones[_i2].y + Math.random()) * h,
 				r: Math.floor(rand() * 200 + options.radius),
-				c: Math.floor(Math.random() * options.colors.length)
+				c: Math.floor(Math.random() * options.colors.length),
+				duration: Math.random() * 10
 			};
 			array.push(c);
 		}
@@ -54,9 +55,10 @@
 			},
 			bindToController: true,
 			controllerAs: '$ctrl',
-			controller: function JLGBubbleCtrl($scope, $element, $window) {
+			controller: ['$scope', '$element', '$window', function JLGBubbleCtrl($scope, $element, $window) {
 				var _this = this;
 
+				console.log('essai');
 				this.$onInit = function () {
 					_this.bggen = document.createElement('bggen');
 					var parent = $element[0];
@@ -76,8 +78,11 @@
 					var array = generateCircle(_this.options);
 					for (var i = 0; i < array.length; i++) {
 						var c = array[i];
+						var animation = _this.options.move ? '\n\t\t\t\t\t\t<animate attributeType="auto" attributeName="r" \n\t\t\t\t\t\tfrom="0" to="' + c.r + '" dur="' + (5 + c.duration) + 's" repeatCount="indefinite" />\n\t\t\t\t\t\t' : '';
+						var radius = _this.options.move ? 0 : c.r;
+
 						var opacity = _this.options.opacity ? 'stroke-opacity="' + _this.options.opacity * 2 + '" fill-opacity="' + _this.options.opacity + '"' : '';
-						content += '<circle cx="' + c.x + '" cy="' + c.y + '" r="' + c.r + '"\n\t\t\t\t\t stroke="' + colors[c.c] + '" stroke-width="1" fill="' + colors[c.c] + '" ' + opacity + ' />';
+						content += '<circle cx="' + c.x + '" cy="' + c.y + '" r="' + radius + '"\n\t\t\t\t\t stroke="' + colors[c.c] + '" stroke-width="1" fill="' + colors[c.c] + '" ' + opacity + ' >\n\t\t\t\t\t ' + animation + '\n\t\t\t\t\t </circle>';
 					}
 
 					var svg = '<svg>' + content + '</svg>';
@@ -91,7 +96,7 @@
 				$scope.$watch('$ctrl.options', function () {
 					_this.render();
 				}, true);
-			}
+			}]
 		};
 	});
 })();

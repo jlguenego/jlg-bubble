@@ -38,6 +38,7 @@
 				y: (zones[i].y + Math.random()) * h,
 				r: Math.floor(rand() * 200 + options.radius),
 				c: Math.floor(Math.random() * options.colors.length),
+				duration: Math.random() * 10,
 			};
 			array.push(c);
 		}
@@ -53,6 +54,7 @@
 			bindToController: true,
 			controllerAs: '$ctrl',
 			controller: function JLGBubbleCtrl($scope, $element, $window) {
+				console.log('essai');
 				this.$onInit = () => {
 					this.bggen = document.createElement('bggen');
 					const parent = $element[0];
@@ -78,10 +80,18 @@
 					const array = generateCircle(this.options);
 					for (let i = 0; i < array.length; i++) {
 						const c = array[i];
+						const animation = (this.options.move) ? `
+						<animate attributeType="auto" attributeName="r" 
+						from="0" to="${c.r}" dur="${5+c.duration}s" repeatCount="indefinite" />
+						` : '';
+						const radius = (this.options.move) ? 0 : c.r;
+						
 						const opacity = (this.options.opacity) ?
 							`stroke-opacity="${this.options.opacity * 2}" fill-opacity="${this.options.opacity}"` : '';
-						content += `<circle cx="${c.x}" cy="${c.y}" r="${c.r}"
-					 stroke="${colors[c.c]}" stroke-width="1" fill="${colors[c.c]}" ${opacity} />`;
+						content += `<circle cx="${c.x}" cy="${c.y}" r="${radius}"
+					 stroke="${colors[c.c]}" stroke-width="1" fill="${colors[c.c]}" ${opacity} >
+					 ${animation}
+					 </circle>`;
 					}
 
 					const svg = `<svg>${content}</svg>`;
