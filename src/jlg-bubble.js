@@ -53,6 +53,7 @@
 			bindToController: true,
 			controllerAs: '$ctrl',
 			controller: function JLGBubbleCtrl($scope, $element, $window) {
+				console.log('essai');
 				this.$onInit = () => {
 					this.bggen = document.createElement('bggen');
 					const parent = $element[0];

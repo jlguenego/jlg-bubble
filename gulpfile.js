@@ -24,3 +24,10 @@ gulp.task('build:css', function () {
 });
 
 gulp.task('build', ['build:js', 'build:css']);
+
+gulp.task('watch', function () {
+    const watcher = gulp.watch('src/**/*', ['build']);
+    watcher.on('change', function (event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    });
+});

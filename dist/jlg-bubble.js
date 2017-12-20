@@ -57,6 +57,7 @@
 			controller: ['$scope', '$element', '$window', function JLGBubbleCtrl($scope, $element, $window) {
 				var _this = this;
 
+				console.log('essai');
 				this.$onInit = function () {
 					_this.bggen = document.createElement('bggen');
 					var parent = $element[0];
