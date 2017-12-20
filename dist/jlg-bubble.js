@@ -54,7 +54,7 @@
 			},
 			bindToController: true,
 			controllerAs: '$ctrl',
-			controller: function JLGBubbleCtrl($scope, $element, $window) {
+			controller: ['$scope', '$element', '$window', function JLGBubbleCtrl($scope, $element, $window) {
 				var _this = this;
 
 				this.$onInit = function () {
@@ -91,7 +91,7 @@
 				$scope.$watch('$ctrl.options', function () {
 					_this.render();
 				}, true);
-			}
+			}]
 		};
 	});
 })();
