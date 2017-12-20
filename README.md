@@ -4,7 +4,7 @@ Generates background with nice relaxing bubbles.
 
 ## Demo
 
-[See the demo](https://jlguenego.github.io/jlg-bubble).
+[See the demo](https://jlguenego.github.io/jlg-bubble/index.html).
 
 ## Install
 
