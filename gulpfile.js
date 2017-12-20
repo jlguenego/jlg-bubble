@@ -8,7 +8,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('deploy', function () {
-    return gulp.src('./example/**/*')
+    return gulp.src(['./**/*', '!./node_modules/**/*', '!package*', '!*.js'])
         .pipe(ghPages());
 });
 
