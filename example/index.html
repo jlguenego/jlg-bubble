@@ -17,15 +17,19 @@
 		<form>
 			<label><span>Count: </span><input type="range" ng-model="cfg.count" min="20" max="1000"><span>{{cfg.count}}</span></label>
 			<br>
-			<label><span>Blue: </span><input type="checkbox" ng-model="color.blue"></label>
-			<label><span>Green: </span><input type="checkbox" ng-model="color.green"></label>
-			<label><span>Yellow: </span><input type="checkbox" ng-model="color.yellow"></label>
-			<label><span>Red: </span><input type="checkbox" ng-model="color.red"></label>
+			<button-group class="clearfix">
+				<button jlg-state="color.blue">Blue</button>
+				<button jlg-state="color.red">Red</button>
+				<button jlg-state="color.green">Green</button>
+				<button jlg-state="color.yellow">Yellow</button>
+			</button-group>
 			<br>
 			<label><span>Opacity: </span><input type="range" ng-model="cfg.opacity" min="0.05" max="1" step="0.05"><span>{{cfg.opacity}}</span></label>
 			<br>
-			<label><span>Grow and burst: </span><input type="checkbox" ng-model="cfg.grow"></label>
-			<label><span>Move: </span><input type="checkbox" ng-model="cfg.move"></label>
+			<button-group class="clearfix">
+				<button jlg-state="cfg.grow">Grow and burst</button>
+				<button jlg-state="cfg.move">Move</button>
+			</button-group>
 		</form>
 	</main>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
