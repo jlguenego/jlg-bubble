@@ -40,7 +40,7 @@
 				vy: 100 * (Math.random() - 0.5),
 				r: Math.floor(rand3() * 200 + options.radius),
 				c: Math.floor(Math.random() * options.colors.length),
-				duration: 5 + Math.random() * 10,
+				duration: (1 + Math.random()) * options.duration,
 			};
 			array.push(c);
 		}
@@ -68,6 +68,7 @@
 				this.render = () => {
 					this.options.width = this.options.width || this.bggen.clientWidth;
 					this.options.height = this.options.height || this.bggen.clientHeight;
+					this.options.duration = this.options.duration || 10;
 
 					const colors = this.options.colors || [
 						'hsla(0, 100%, 50%, 0.05)',

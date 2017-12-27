@@ -56,7 +56,7 @@ button-group {
 }
 
 [jlg-state].active {
-	background-color: hsl(0, 0%, 80%);
+	background-color: hsl(240, 100%, 80%);
 }
 
 [jlg-state]:first-child {

@@ -42,7 +42,7 @@
 				vy: 100 * (Math.random() - 0.5),
 				r: Math.floor(rand3() * 200 + options.radius),
 				c: Math.floor(Math.random() * options.colors.length),
-				duration: 5 + Math.random() * 10
+				duration: (1 + Math.random()) * options.duration
 			};
 			array.push(c);
 		}
@@ -71,6 +71,7 @@
 				this.render = function () {
 					_this.options.width = _this.options.width || _this.bggen.clientWidth;
 					_this.options.height = _this.options.height || _this.bggen.clientHeight;
+					_this.options.duration = _this.options.duration || 10;
 
 					var colors = _this.options.colors || ['hsla(0, 100%, 50%, 0.05)', 'hsla(120, 100%, 50%, 0.05)', 'hsla(240, 100%, 50%, 0.05)', 'hsla(60, 100%, 50%, 0.1)'];
 
