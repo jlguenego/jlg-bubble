@@ -3,7 +3,7 @@
 
 	const app = angular.module('jlg-bubble', []);
 
-	function rand() {
+	function rand3() {
 		return Math.random() * Math.random() * Math.random();
 	}
 
@@ -36,9 +36,11 @@
 			const c = {
 				x: (zones[i].x + Math.random()) * w,
 				y: (zones[i].y + Math.random()) * h,
-				r: Math.floor(rand() * 200 + options.radius),
+				vx: 100 * (Math.random() - 0.5),
+				vy: 100 * (Math.random() - 0.5),
+				r: Math.floor(rand3() * 200 + options.radius),
 				c: Math.floor(Math.random() * options.colors.length),
-				duration: Math.random() * 10,
+				duration: (1 + Math.random()) * options.duration,
 			};
 			array.push(c);
 		}
@@ -66,6 +68,7 @@
 				this.render = () => {
 					this.options.width = this.options.width || this.bggen.clientWidth;
 					this.options.height = this.options.height || this.bggen.clientHeight;
+					this.options.duration = this.options.duration || 10;
 
 					const colors = this.options.colors || [
 						'hsla(0, 100%, 50%, 0.05)',
@@ -80,17 +83,24 @@
 					const array = generateCircle(this.options);
 					for (let i = 0; i < array.length; i++) {
 						const c = array[i];
-						const animation = (this.options.move) ? `
+						const growAnimation = (this.options.grow) ? `
 						<animate attributeType="auto" attributeName="r" 
-						from="0" to="${c.r}" dur="${5+c.duration}s" repeatCount="indefinite" />
+						from="0" to="${c.r}" dur="${c.duration}s" repeatCount="indefinite" />
 						` : '';
-						const radius = (this.options.move) ? 0 : c.r;
-						
+						const moveAnimation = (this.options.move) ? `
+						<animate attributeType="auto" attributeName="cx" 
+						from="${c.x}" to="${c.x+c.duration*c.vx}" dur="${c.duration}s" repeatCount="indefinite" />
+						<animate attributeType="auto" attributeName="cy" 
+						from="${c.y}" to="${c.y+c.duration*c.vy}" dur="${c.duration}s" repeatCount="indefinite" />
+						` : '';
+						const radius = (this.options.grow) ? 0 : c.r;
+
 						const opacity = (this.options.opacity) ?
 							`stroke-opacity="${this.options.opacity * 2}" fill-opacity="${this.options.opacity}"` : '';
 						content += `<circle cx="${c.x}" cy="${c.y}" r="${radius}"
 					 stroke="${colors[c.c]}" stroke-width="1" fill="${colors[c.c]}" ${opacity} >
-					 ${animation}
+					 ${growAnimation}
+					 ${moveAnimation}
 					 </circle>`;
 					}
 

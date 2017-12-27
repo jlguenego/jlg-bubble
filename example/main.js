@@ -21,4 +21,23 @@
 
 		}, true);
 	});
+
+	app.directive('jlgState', function() {
+		return {
+			scope: {
+				jlgState: '=',
+			},
+			bindToController: true,
+			controller: function JLGState($element) {
+				$element.on('click', () => {
+					this.jlgState = !this.jlgState;
+					if (this.jlgState) {
+						$element.addClass('active');
+					} else {
+						$element.removeClass('active');
+					}
+				});
+			}
+		};
+	});
 })();

@@ -38,3 +38,54 @@ label {
 label>span {
 	width: 10em;
 }
+
+button-group {
+	display: block;
+}
+
+[jlg-state] {
+	display: block;
+	float: left;
+	font-family: inherit;
+	border: 1px solid black;
+	border-width: 1px 1px 1px 0px;
+	font-size: 1em;
+	padding: 0.5em;
+	background-color: transparent;
+	margin: 0;
+}
+
+[jlg-state].active {
+	background-color: hsl(240, 100%, 80%);
+}
+
+[jlg-state]:first-child {
+	border-radius: 0.3em 0 0 0.3em;
+	border-width: 1px;
+}
+
+[jlg-state]:last-child {
+	border-radius: 0 0.3em 0.3em 0;
+}
+
+[jlg-state="color.blue"].active {
+	background-color: hsl(240, 100%, 80%);
+}
+[jlg-state="color.red"].active {
+	background-color: hsl(0, 100%, 80%);
+}
+[jlg-state="color.green"].active {
+	background-color: hsl(120, 100%, 80%);
+}
+[jlg-state="color.yellow"].active {
+	background-color: hsl(60, 100%, 80%);
+}
+
+
+
+
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+}
