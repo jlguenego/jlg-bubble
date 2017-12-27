@@ -3,8 +3,8 @@
 
 	const app = angular.module('jlg-bubble', []);
 
-	function rand3() {
-		return Math.random() * Math.random() * Math.random();
+	function rand6() {
+		return Math.random() * Math.random() * Math.random() * Math.random() * Math.random() * Math.random();
 	}
 
 	function generateCircle(options) {
@@ -36,9 +36,9 @@
 			const c = {
 				x: (zones[i].x + Math.random()) * w,
 				y: (zones[i].y + Math.random()) * h,
-				vx: 100 * (Math.random() - 0.5),
-				vy: 100 * (Math.random() - 0.5),
-				r: Math.floor(rand3() * 200 + options.radius),
+				vx: 10 * options.speed * (Math.random() - 0.5),
+				vy: 10 * options.speed * (Math.random() - 0.5),
+				r: Math.floor(rand6() * 100 + options.radius),
 				c: Math.floor(Math.random() * options.colors.length),
 				duration: (1 + Math.random()) * options.duration,
 			};
@@ -68,7 +68,9 @@
 				this.render = () => {
 					this.options.width = this.options.width || this.bggen.clientWidth;
 					this.options.height = this.options.height || this.bggen.clientHeight;
+					this.options.radius = this.options.radius || 50;
 					this.options.duration = this.options.duration || 10;
+					this.options.speed = this.options.speed || 10;
 
 					const colors = this.options.colors || [
 						'hsla(0, 100%, 50%, 0.05)',
@@ -77,7 +79,7 @@
 						'hsla(60, 100%, 50%, 0.1)',
 					];
 
-					this.options.radius = this.options.radius || 50;
+
 
 					let content = '';
 					const array = generateCircle(this.options);
