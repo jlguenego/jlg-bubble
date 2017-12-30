@@ -1,4 +1,8 @@
-html,
+html {
+	display: block;
+	height: 100%;
+}
+
 body {
 	display: block;
 	margin: 0;
