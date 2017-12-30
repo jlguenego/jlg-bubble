@@ -5,7 +5,7 @@
 
 	app.run(($rootScope) => {
 		$rootScope.cfg = {
-			count: 31,
+			density: 10,
 			colors: ['blue', 'red', 'green', 'yellow'],
 			opacity: 0.05,
 			radius: 50,

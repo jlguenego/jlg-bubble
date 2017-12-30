@@ -60,7 +60,6 @@
 			controller: ['$scope', '$element', '$window', function JLGBubbleCtrl($scope, $element, $window) {
 				var _this = this;
 
-				console.log('essai');
 				this.$onInit = function () {
 					_this.bggen = document.createElement('bggen');
 					var parent = $element[0];
@@ -69,11 +68,13 @@
 				};
 
 				this.render = function () {
-					_this.options.width = _this.options.width || _this.bggen.clientWidth;
-					_this.options.height = _this.options.height || _this.bggen.clientHeight;
+					_this.options.width = _this.bggen.clientWidth;
+					_this.options.height = _this.bggen.clientHeight;
 					_this.options.radius = _this.options.radius || 50;
 					_this.options.duration = _this.options.duration || 10;
 					_this.options.speed = _this.options.speed || 10;
+					_this.options.count = Math.ceil(_this.options.density * _this.options.width * _this.options.height / 100000);
+					console.log('count', _this.options.count);
 
 					var colors = _this.options.colors || ['hsla(0, 100%, 50%, 0.05)', 'hsla(120, 100%, 50%, 0.05)', 'hsla(240, 100%, 50%, 0.05)', 'hsla(60, 100%, 50%, 0.1)'];
 
@@ -96,6 +97,14 @@
 				$window.onresize = function () {
 					_this.render();
 				};
+
+				// $window.onscroll = () => {
+				// 	this.render();
+				// };
+
+				// $window.ontouchmove = () => {
+				// 	this.render();
+				// };
 
 				$scope.$watch('$ctrl.options', function () {
 					_this.render();
